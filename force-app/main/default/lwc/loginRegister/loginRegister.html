@@ -1,0 +1,73 @@
+<!--
+  @description       : 
+  @author            : Selçuk GÖKTAŞ
+  @group             : 
+  @last modified on  : 01-26-2023
+  @last modified by  : Selçuk GÖKTAŞ
+-->
+<template>
+
+	<c-notify></c-notify>
+
+	<div class="login-wrap">
+		<div class="login-html">
+			<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+			<div class="login-form">
+				<div class="sign-in-htm">
+					<div class="group">
+						<label for="user" class="label">Email</label>
+						<input id="user" type="text" class="input" name="user" required onchange={onchangeInputHandler}>
+					</div>
+					<div class="group">
+						<label for="pass" class="label">Password</label>
+						<input id="pass" type="password" class="input"  required  data-type="password" name="pass" onchange={onchangeInputHandler}>
+					</div>
+					<div class="group">
+						<input id="check" type="checkbox" class="check" checked>
+						<label for="check"><span class="icon"></span> Keep me Signed in</label>
+					</div>
+					<div class="group">
+						<input type="submit" class="button" value="Sign In" onclick={signInClick}>
+					</div>
+					<div class="hr"></div>
+					<div class="foot-lnk">
+						<a href="#forgot">Forgot Password?</a>
+					</div>
+				</div>
+				<div class="sign-up-htm">
+					<div class="group">
+						<label for="userReg" class="label">Email</label>
+						<input id="userReg" type="text" class="input"  required  name="userReg" onchange={onchangeInputHandler}>
+					</div>
+
+					<div class="group">
+						<label for="name" class="label">First and Last Name</label>
+						<input id="name" type="text" class="input"  required  name="name" onchange={onchangeInputHandler}>
+					</div>
+
+
+
+					<div class="group">
+						<label for="passReg" class="label">Password</label>
+						<input id="passReg" type="password" class="input"  required  data-type="password" name="passReg" onchange={onchangeInputHandler}>
+					</div>
+					<div class="group">
+						<label for="passReg2" class="label">Repeat Password</label>
+
+						<input id="passReg2" type="password" class="input"  required  data-type="password"  name="passReg2" onchange={onchangeInputHandler}>
+					</div>
+
+					<div class="group">
+						<input type="submit" class="button" value="Sign Up" onclick={signUpClick}>
+					</div>
+					<div class="hr"></div>
+					<div class="foot-lnk">
+						<label for="tab-1">Already Member?</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</template>

@@ -1,0 +1,32 @@
+<!--
+  @description       : 
+  @author            : Selçuk GÖKTAŞ
+  @group             : 
+  @last modified on  : 01-26-2023
+  @last modified by  : Selçuk GÖKTAŞ
+-->
+<template>
+
+  <template if:true={showNotification}>
+
+    <div class="slds-notify_container slds-is-relative">
+
+      <div class={notifyClassses} role="status">
+        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+          <use xlink:href={icon}></use>
+        </svg>
+
+        <div class="slds-notify__content">
+          <h2 class="slds-text-heading_small "> &nbsp;&nbsp; {message}
+          </h2>
+        </div>
+      </div>
+
+    </div>
+
+
+  </template>
+
+
+
+</template>
