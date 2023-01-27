@@ -4,6 +4,8 @@ import { NavigationMixin } from 'lightning/navigation';
 import login from '@salesforce/apex/guestUserHandler.login';
 import register from '@salesforce/apex/guestUserHandler.register';
 
+import blackbg from '@salesforce/resourceUrl/blackbg';
+
 export default class LoginRegister extends NavigationMixin(LightningElement) {
   
     @track register={
@@ -14,6 +16,7 @@ export default class LoginRegister extends NavigationMixin(LightningElement) {
     
   }
 
+  logoimage=blackbg;
 
    @track login={
     Email__c:'',
@@ -40,7 +43,7 @@ onchangeInputHandler(event){
 
     // Sign in LOGIN 
     case 'user':
-      this.login.Email__c=val;
+      this.login.Email__c=val.toLowerCase();
       break;
 
     case 'pass':
@@ -122,14 +125,8 @@ signInClick(){
    })
    .catch(error=>{
     console.log(error);
-     const evt = new ShowToastEvent({
-       title: 'Login Error ',
-       message: error.body.message ,
-       variant: 'Error',
-       mode: 'dismissable'
-   });
-   this.dispatchEvent(evt);
-   this.successEvent=false;
+    
+    this.showToastMsg(error,'error');
  
    });
 
@@ -201,6 +198,9 @@ navtoMemberArea() {
 
 
 connectedCallback(){
+
+  console.log('Logo from static resources');
+  console.log(this.logoimage);
   console.log('Checking Session....');
 
   let sessionID = sessionStorage.getItem('Gid');

@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : Selçuk GÖKTAŞ
 * @group             : 
-* @last modified on  : 01-25-2023
+* @last modified on  : 01-27-2023
 * @last modified by  : Selçuk GÖKTAŞ
 **/
 public without sharing class  guestUserHandler {
@@ -182,7 +182,7 @@ public without sharing class  guestUserHandler {
         try {
             isRegistered=[SELECT Id,First_Name__c,Last_Name__c,Email__c, Password__c,isEmailVerified__c
                           FROM Guest_User__c 
-                          WHERE Email__c=:singleGuestUser.Email__c AND Password__c=:singleGuestUser.Password__c
+                          WHERE Email__c=:singleGuestUser.Email__c.toLowerCase() AND Password__c=:singleGuestUser.Password__c
                           LIMIT 1];
             
             
