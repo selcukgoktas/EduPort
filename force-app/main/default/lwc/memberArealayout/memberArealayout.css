@@ -1,0 +1,113 @@
+.navbar{
+
+  height: 70px;
+  width: 100%;
+  background: #170e61;
+  margin-top:0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+
+.app-logo{
+  
+  text-align: right;
+    padding-top:10px;
+    padding-right:10px;
+    float:right;
+}
+
+
+
+.area{
+  background: #212234;
+  height: 100%;
+}
+
+
+.sidebar{
+  background: #03223c;
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+   
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+
+}
+
+
+
+.canvas{
+ 
+  
+  
+  transition: margin-left .5s;
+  margin-left: 0px;
+}
+
+.canvas-right{
+ 
+  
+  transition: margin-left .5s;
+  margin-left: 250px;
+}
+
+
+.openbtn{
+  font-size: 55px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding-top:0px;
+  padding-bottom:0px;
+  padding-left:0px;
+  border: none;
+}
+
+
+.openbtn:hover {
+  background-color: rgb(223, 43, 43);
+}
+
+
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+
