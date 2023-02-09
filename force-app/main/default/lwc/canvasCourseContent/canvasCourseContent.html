@@ -1,0 +1,62 @@
+<!--
+  @description       : 
+  @author            : Selçuk GÖKTAŞ
+  @group             : 
+  @last modified on  : 02-03-2023
+  @last modified by  : Selçuk GÖKTAŞ
+-->
+<template>
+
+  <br />
+    <c-notify></c-notify>
+
+ <!--   
+  <br />
+
+  course contents Received course id : {courseId}
+
+  <br />
+
+
+  Check <b> contentType </b> to show the different screens.  <br />
+
+  <b> contentType = landingpage, paymentpage, memberpage, lesson-video, lesson-article, lesson-pdf </b>
+
+
+  <br />
+-->
+    <template if:true={showcourseDetails}>
+     <!-- Lesson Details <br />
+      {selectedLesson.Id} <br />
+      {selectedLesson.Name} <br />
+      {selectedLesson.icon__c} <br />
+      {selectedLesson.Type__c} <br />
+      {selectedLesson.URL__c} <br />
+      {selectedLesson.Article__c} <br />
+      {selectedLesson.Section__c} <br />
+      {selectedLesson.Number__c} <br /> -->
+
+
+      <template if:true={isvideo}>
+        <div class="video">
+         <video allow="fullscreen" frameborder="0" width="100%" height="700" controls="true" controlslist="nodownload">
+            <source src={selectedLesson.URL__c} type="video/mp4">
+          </video>
+        </div>
+    </template>
+
+    <template if:true={isarticle}>
+
+      <div class="article">
+      <lightning-formatted-rich-text value={selectedLesson.Article__c}>
+      </lightning-formatted-rich-text>
+
+      </div>
+
+
+    </template>
+
+
+    </template>
+  
+</template>

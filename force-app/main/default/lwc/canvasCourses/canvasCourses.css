@@ -1,0 +1,188 @@
+.course-card{
+ 
+  transition: transform .2s;
+  width: 30vw;
+  height: 33vw;
+  float: left;
+  margin: 15px;
+}
+
+.course-card-right{
+ 
+ 
+  width: 30vw;
+  height: 33vw;
+  float: left;
+  margin: 3vw;
+}
+
+.course-card-header{
+  
+  margin: 10px;
+}
+.course-card-image{
+
+ 
+  border-radius: 15px;
+  
+}
+
+
+.course-card:hover {
+  transform: scale(1.25); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transition-delay:0.5s;
+}
+
+
+.course-body{
+
+  
+  width: 100%;
+  height: 50px;
+  display: flex;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.course-card-icon{
+  
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ 
+  text-align: center;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  background: antiquewhite;
+  font-weight: bold;
+  display:table;
+}
+
+
+.course-card-icon > span {
+  vertical-align: middle;
+  display: table-cell;
+  font-size: 1.85vw;
+}
+
+.course-title{
+  
+  width: 100%;
+  display:table;
+  
+}
+
+
+div.course-title > h3{
+  font-weight: bolder;
+  font-size: 1.7vw;
+  padding-left: 12px;
+  vertical-align: middle;
+  display: table-cell;
+
+}
+
+
+
+.course-description{
+
+
+  margin-top: 12px;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  font-size: 1.3vw;
+  height:120px;
+ 
+}
+
+
+
+
+@media screen and (max-width: 450px) {
+
+  .course-card{
+ 
+    margin-top: 12vw;
+    width: 90vw;
+    height: 120vw;
+    float: left;
+    margin: 15px;
+    padding-right: 12px;
+    
+  }
+  
+  .course-card-header{
+    width: 100%;
+    height: 50vw;
+    margin: 10px;
+    padding-right: 10vw;
+  }
+  .course-card-image{
+  
+    width: 100%;
+    height: 50vw;
+    border-radius: 15px;
+    margin: 10px;
+    
+   
+  }
+  
+  
+  
+  .course-body{
+  
+    
+    width: 100%;
+    
+    height: 50px;
+    display: flex;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  
+  .course-card-icon{
+    
+   display: none;
+  }
+  
+  
+  .course-card-icon > span {
+    display: none;
+  }
+  
+  .course-title{
+    
+    width: 100%;
+    
+    display:table;
+    
+  }
+  
+  
+  div.course-title > h3{
+    font-weight: bolder;
+    width: 100%;
+    font-size: 22px;
+    padding-left: 12px;
+   
+  }
+  
+  
+  
+  .course-description{
+  
+    
+    font-size: 18px;
+
+    height: 5vw;
+    margin-left: 20px;
+    margin-right: 40px;
+    margin-bottom: 12vw;
+  }
+  
+}
+
+
+

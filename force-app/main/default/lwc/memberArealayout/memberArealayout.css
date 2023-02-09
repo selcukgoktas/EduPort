@@ -13,15 +13,15 @@
 .app-logo{
   
   text-align: right;
-    padding-top:10px;
-    padding-right:10px;
+    padding-top:0.5vw;
+    padding-right:0.5vw;
     float:right;
 }
 
 
 
 .area{
-  background: #212234;
+  background: #ffffff;
   height: 100%;
 }
 
@@ -55,14 +55,14 @@
  
   
   transition: margin-left .5s;
-  margin-left: 250px;
+  margin-left: 300px;
 }
 
 
 .openbtn{
-  font-size: 55px;
+  font-size: 40px;
   cursor: pointer;
-  background-color: #111;
+  background-color: #170e61;
   color: white;
   padding-top:0px;
   padding-bottom:0px;
@@ -72,42 +72,101 @@
 
 
 .openbtn:hover {
-  background-color: rgb(223, 43, 43);
+  background-color: #8e1818;
 }
 
 
 
 .sidebar .closebtn {
   position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+    top: 0;
+    left: 0px;
+    padding-left: 0px;
+    font-size: 55px;
+    margin-left: 50px;
 }
 
 
-.sidebar a {
-  padding: 8px 8px 8px 32px;
+.course a {
+  /* padding: 8px 8px 8px 32px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #4ecbb8;
   display: block;
   transition: 0.3s;
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
+
+.course a:hover {
+  color: #f1f1f1;
+}
+
+.section a {
+  color: #4ecbb8;
+  /*padding: 8px 8px 8px 32px;*/
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+
+  text-decoration: none;
+  font-size: 25px;
+  display: block;
+  transition: 0.3s;
+}
+
+.section a:hover {
   color: #f1f1f1;
 }
 
 
+.lesson-hidden a{
+  display:none;
 
+}
+
+
+.lesson a {
+  color: #11a3d3;
+  /*padding: 8px 8px 8px 32px;*/
+
+
+  padding-left: 30px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+
+  text-decoration: none;
+  font-size: 25px;
+  display: block;
+  transition: 0.3s;
+}
+
+.lesson a:hover {
+  color: #f1f1f1;
+}
 
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
+
+  .app-logo{
+  
+    text-align: right;
+      padding-top:5px;
+      padding-right:5px;
+      float:right;
+  }
+  
 }
 
 

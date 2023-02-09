@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : Selçuk GÖKTAŞ
 * @group             : 
-* @last modified on  : 01-27-2023
+* @last modified on  : 02-02-2023
 * @last modified by  : Selçuk GÖKTAŞ
 **/
 public without sharing class  guestUserHandler {
@@ -298,4 +298,44 @@ throw e1;
     }
     
     
+
+
+    @AuraEnabled
+    public static List<Course__c> getCourses(){
+        List<Course__c> multiCourse = New List<Course__c>();
+
+        try {
+            multiCourse=[SELECT Id, Name, Image__c,Icon__c, isPaid__c, Description__c,Number__c FROM Course__c ORDER BY Number__c];
+                    } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+        
+        return multiCourse;
+    }
+
+
+
+    @AuraEnabled
+    public static List<Section__c> getCourse(String searchCourseId){
+
+        System.debug('Search this course Details : '+searchCourseId);
+        List<Section__c> courseDetails = New List<Section__c>();
+
+        try {
+            courseDetails=[SELECT course__r.Name, Id, Name, Course__c, icon__c,Number__c, 
+            (SELECT Id, Name, icon__c, Type__c, URL__c, Article__c, Section__c,Number__c 
+            FROM Lessons__r ORDER BY Number__c) 
+            FROM Section__c 
+            WHERE course__c =:searchCourseId 
+            ORDER BY Number__c];
+                    
+        
+            system.debug(courseDetails);
+
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+        
+        return courseDetails;
+    }
 }

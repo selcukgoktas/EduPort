@@ -2,10 +2,11 @@
   @description       : 
   @author            : Selçuk GÖKTAŞ
   @group             : 
-  @last modified on  : 01-28-2023
+  @last modified on  : 02-03-2023
   @last modified by  : Selçuk GÖKTAŞ
 -->
 <template>
+  <c-notify></c-notify>
   <template if:true={showMemberArea}>
 
   
@@ -25,40 +26,52 @@
   <div class="area">
 
     <div class="sidebar" data-id="sidebar">
-      
+      <br />
       <a href="javascript:void(0)" class="closebtn" onclick={closeNav}>&times;</a>
+
       
-      <a href="#">All Courses</a>
+      <template if:true={courses}> <!-- SHOW ALL COURSES WITH STANDARD MENU ITEMS-->
+        <template for:each={sidemenu} for:item="item">
+          <div class="course" key={item.Id} >
+          <a href="#" data-id={item.Id} onclick={courseSelectedHandler}>{item.Name}</a>
+        </div>
+        </template>
 
-      <!---   According to selected Courses from the Canvas Below links will populate
-      From the Related Courses        -->
+      </template>
 
-       <!---   make sections are expandable and different style       -->
 
-      <!---   if lesson is finished convert the finished course style        -->
+      <template if:false={courses}> <!-- SHOW COURSE SECTIONS AND LESSONS CONTENTS WITH STANDARD MENU ITEMS-->
+        <template for:each={coursecontent} for:item="section">  
+          <div class="section" key={section.Id} >
+          <a href="#" data-id={section.Id} onclick={sectionSelectedHandler}>{section.icon__c} {section.Name}</a>
+          </div>
 
-      <!---   USE ADVANCED SEARCH HERE IN THIS COURSE AND OTHER COURSES      -->
+          
+          <template if:true={section.showSection}>
+            <template if:true={section.Lessons__r}>
+              <template for:each={section.Lessons__r} for:item="lesson">
+                <div class="lesson" key={lesson.Id} >
+                <a href="#" data-id={lesson.Id} onclick={lessonSelectedHandler}>{lesson.icon__c} {lesson.Name} </a>
+              </div>
+              </template>
+          </template>
 
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
+          </template>
+
+
+        </template>
+
+      </template>
+
+   
     </div>
 
 
 
     <div class={canvasstyle} data-id="canvas">
 
-              <!---  USE CHILD COMPONENT HERE    -->
 
-              <!---  USE TEMPLATE IF ACCOURDING TO LESSON TYPE VIDEO, LINK ARTICLE ETC.    -->
-
-
-        <!---  Home is All Courses Card components are showned here   on CANVAS     -->
-        <!---  If any Course is selected first lesson of the related course is here      -->
-
-        <!---  If user start course last course screen is populated here       -->
-
-
+<!---
       <div class="video">
 
         
@@ -70,8 +83,17 @@
 
       </div>
 
+  -->
 
-
+          <template if:true={courses}>
+            <c-canvas-courses cardstyle={coursecardStyle} oncourseretrieved={courseretrieveHandler} oncourseselected={courseSelectedHandler}></c-canvas-courses>
+          </template>
+          <template if:false={courses}>
+            Selected Course id : {courseId}
+            <c-canvas-course-content course-id={courseId} oncoursedetailsretrieved={courseDetailsHandler}></c-canvas-course-content>
+          
+          
+          </template>
 
     </div>
   </div>

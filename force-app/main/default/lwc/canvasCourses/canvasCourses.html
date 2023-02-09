@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : Selçuk GÖKTAŞ
+  @group             : 
+  @last modified on  : 02-02-2023
+  @last modified by  : Selçuk GÖKTAŞ
+-->
+<template>
+  <c-notify></c-notify>
+  <template for:each={courses} for:item="course">
+    <div class={cardstyle} key={course.Id} onclick={clickcoursecard} data-id={course.Id}>
+      <div class="course-card-header"> 
+        <img class="course-card-image" src={course.Image__c} data-id={course.Id}/>
+      </div>
+
+      <div class="course-body">
+        <div class="course-card-icon"><span data-id={course.Id}>{course.icon__c}</span></div>
+        <div class="course-title"><h3 data-id={course.Id}>{course.Name}</h3></div>
+      </div>
+
+      <div class="course-description" data-id={course.Id}>{course.Description__c}</div>
+
+     
+
+
+    </div>
+    
+  </template>
+</template>

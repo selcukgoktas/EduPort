@@ -1,0 +1,44 @@
+<!--
+  @description       : 
+  @author            : Selçuk GÖKTAŞ
+  @group             : 
+  @last modified on  : 02-06-2023
+  @last modified by  : Selçuk GÖKTAŞ
+-->
+<template>
+   
+  <div class="container"> 
+
+    <lightning-tabset class="slds-tabs_large">
+      <lightning-tab label="📃 Invoices" > List of Invoices </lightning-tab>
+      <lightning-tab label="💳 Subscription" > 
+
+
+        <div class="container-inner"> 
+
+          <lightning-tabset class="slds-tabs_large">
+            <lightning-tab label="🤴🏻Status" > 
+              <c-subscription-status></c-subscription-status>
+            </lightning-tab>
+            <lightning-tab label="💳 Credit Cards" >
+              <c-credit-card> </c-credit-card>
+            </lightning-tab>
+            
+          
+        </lightning-tabset>
+      
+        </div>
+      
+
+
+      </lightning-tab>
+      <lightning-tab label="🙎‍♂️ Profile" > Profile Information</lightning-tab>
+      
+    
+  </lightning-tabset>
+
+  </div>
+
+
+
+</template>
