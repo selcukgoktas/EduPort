@@ -12,6 +12,7 @@ public without sharing class tools {
     @AuraEnabled
     public static Object simpleGetRequest(String endPoint){
         
+        httpResponse res = New httpResponse();
         try {
            
 
@@ -19,7 +20,7 @@ public without sharing class tools {
             httpRequest req = New httpRequest();
             req.setmethod('GET');
             req.setEndpoint(endPoint);
-            httpResponse res= http.send(req);
+            res= http.send(req);
 
 
         } catch (Exception e) {
@@ -42,18 +43,6 @@ public without sharing class tools {
      return authorization;
     }
 
-/*
-    public static string generateRequestString(Object Obj){
 
-        String convertstr = JSON.serialize(Obj);
-
-        convertstr=convertstr.replace('"','').replace(':','=').replace('{','[').replace('}',']');
-
-        System.debug(convertstr);
-
-        return convertstr;
-
-    }
-*/
-
+    
 }

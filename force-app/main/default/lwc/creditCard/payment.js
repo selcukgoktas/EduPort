@@ -106,6 +106,14 @@ let cards = [
     length: [13, 16, 19],
     cvcLength: [3],
     luhn: true
+  },
+  {
+    type: "troy",
+    pattern: /^(?:9792|65\d{2}|36|2205)\d{12}$/,
+    format: defaultFormat,
+    length: [16],
+    cvcLength: [3],
+    luhn: true
   }
 ];
 

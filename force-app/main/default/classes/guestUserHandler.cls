@@ -2,11 +2,88 @@
 * @description       : 
 * @author            : Selçuk GÖKTAŞ
 * @group             : 
-* @last modified on  : 02-02-2023
+* @last modified on  : 02-10-2023
 * @last modified by  : Selçuk GÖKTAŞ
 **/
 public without sharing class  guestUserHandler {
     
+
+
+    @AuraEnabled
+    public static string createInvoice(Invoice__c inv,String cardUserKey, String cardToken){
+
+        Guest_User__c guestUser = [SELECT Id,isSubscribed__c FROM Guest_User__c WHERE Id=:inv.Guest_User__c LIMIT 1];
+ 
+        // last transaction on credit card.
+        // errorGroup__c
+        // errorMessage__c
+
+        /*
+
+        SELECT Id,cardUserKey__c, cardToken__c, lastFourDigits__c, cardType__c, cardBankName__c, Guest_User__c, Name 
+        FROM CreditCard__c WHERE cardToken__c='LOKNWSXb78wszu4i+zL4g2aP01M=' AND cardUserKey__c='gz1F3DrcUzgIvbmd7ieahFXyMX4='
+
+
+        */
+
+        System.debug('Card User Key : '+ cardUserKey);
+        System.debug('cardToken  : '+ cardToken);
+        
+
+        CreditCard__c cc = [SELECT Id,cardUserKey__c, cardToken__c, errorGroup__c,errorMessage__c 
+                                FROM CreditCard__c 
+                                WHERE cardUserKey__c=:cardUserKey AND cardToken__c=:cardToken LIMIT 1];
+
+        System.debug(cc);                        
+
+        cc.errorGroup__c = inv.errorGroup__c;
+        cc.errorMessage__c = inv.errorMessage__c;
+
+
+
+        guestUser.isSubscribed__c=true;
+        try {
+            insert inv;
+            update guestUser;
+            update cc;  // always update the cc err fields with the latest invoice news.
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+
+        return inv.id;
+    }
+
+
+
+    @AuraEnabled
+    public static string addCard(CreditCard__c cc){
+
+        List<CreditCard__c> cclist=[SELECT Id, Name, cardUserKey__c, cardToken__c, lastFourDigits__c, cardType__c, cardBankName__c,
+                                    Primary__c, Expire__c, Holder_Name__c,  Guest_User__c 
+                                    FROM CreditCard__c 
+                                    WHERE Guest_User__c=:cc.Guest_User__c];
+
+
+
+      
+        cc.Primary__c=cclist.size()==0?true:false;  
+
+        
+        try {
+
+            insert cc;
+            
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+
+        return cc.id;
+    }
+
+
+   
+
+
     
     @AuraEnabled(cacheable=true)
     public static list<Invoice__c> retrieveInvoices(String recordid){
@@ -83,12 +160,7 @@ public without sharing class  guestUserHandler {
     
     @AuraEnabled
     public static void updatePaymentDetails(Guest_User__c GU, Guest_Payment_Method__c GPM, Payment_Method__c PM){
-        
-        
-        
-        
-        
-        
+ 
         try {
             // Insert Payment_Method__c PM
             insert PM;
